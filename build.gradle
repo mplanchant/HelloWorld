@@ -38,6 +38,8 @@ dependencies {
     implementation "org.http4k:http4k-format-jackson:${http4kVersion}"
     implementation "org.http4k:http4k-server-jetty:${http4kVersion}"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
-    testImplementation "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    testImplementation "io.kotest:kotest-runner-junit5-jvm:${kotestVersion}"
+    testImplementation "io.kotest:kotest-assertions-core-jvm:${kotestVersion}"
+    testImplementation "io.kotest:kotest-assertions-json-jvm:${kotestVersion}"
+    testImplementation "org.http4k:http4k-testing-kotest:${http4kVersion}"
 }

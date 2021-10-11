@@ -1,17 +1,22 @@
 package com.example.routes
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import org.http4k.contract.ContractRoute
 import org.http4k.contract.meta
 import org.http4k.core.Body
 import org.http4k.core.HttpHandler
-import org.http4k.core.Method.POST
+import org.http4k.core.Method.*
 import org.http4k.core.Request
 import org.http4k.core.Response
 import org.http4k.core.Status.Companion.OK
 import org.http4k.core.with
 import org.http4k.format.Jackson.auto
 
-data class NameAndMessage(val name: String, val message: String)
+data class NameAndMessage(
+    @JsonProperty("Name")
+    val name: String,
+    val message: String
+)
 
 // the body lens here is imported as an extension function from the Jackson instance
 val nameAndMessageLens = Body.auto<NameAndMessage>().toLens()

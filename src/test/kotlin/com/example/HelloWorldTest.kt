@@ -1,17 +1,16 @@
 package com.example
 
-import org.http4k.core.Method.GET
+import io.kotest.core.spec.style.FreeSpec
+import org.http4k.core.Method
 import org.http4k.core.Request
-import org.http4k.core.Response
 import org.http4k.core.Status.Companion.OK
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Test
+import org.http4k.kotest.shouldHaveStatus
 
-class HelloWorldTest {
-
-    @Test
-    fun `Ping test`() {
-        assertEquals(app(Request(GET, "/ping")), Response(OK).body("pong"))
+class AppTest : FreeSpec() {
+    init {
+        "should produce openapi3 spec for the API" {
+            val openApiV1 = app(Request(Method.GET, "/contract/api/v1/swagger.json"))
+            openApiV1 shouldHaveStatus OK
+        }
     }
-
 }
