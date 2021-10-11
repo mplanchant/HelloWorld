@@ -43,7 +43,7 @@ val app: HttpHandler = routes(
 fun main() {
     val printingApp: HttpHandler = PrintRequest().then(app)
 
-    val server = printingApp.asServer(Jetty(9000)).start()
+    val server = printingApp.asServer(Jetty(8888)).start()
 
     println("Server started on " + server.port())
 }
